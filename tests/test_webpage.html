@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.6.1.css">
+</head>
+
+<div class="btn-group">
+    <button type="button" id="add" style="visibility: hidden">Add Record</button>
+    <button type="button" id="delete" style="visibility: hidden">Delete Record</button>
+    <button type="button" id="display" style="visibility: hidden">Display Record</button>
+</div>
+
+<div id="qunit"></div>
+<div id="qunit-fixture">
+
+    <div class="box-wrapper">
+        <div class="op-results">
+            <h2>Operation Results</h2>
+            <label id="results1">Please select an operation</label><br>
+            <label id="results2"></label><br><br>
+            <label id="results3"></label>
+        </div>
+
+        <div class="stats">
+            <h2>Statistics</h2>
+            <h3>Additions/Hour</h3>
+            <label id="additions"></label>
+            <h3>Additions/Hour: Deletions/Hour</h3>
+            <label id="ratio"></label>
+        </div>
+    </div>
+</div>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modal-title"></h3>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-objects">
+            <div id="add-div" class="form-set">
+                <b>Name:</b><br>
+                <input class="text-box" type="text" id="name" placeholder="Jon Doe">
+                <label class="error" id="name-error">*Name format not appropriate</label>
+                <br>
+                <b>Phone:</b><br>
+                <input class="text-box"
+                       type="tel"
+                       id="phone" placeholder="(123) 456-7890">
+                <label class="error" id="phone-error">*Telephone format is invalid</label>
+            </div>
+            <div id="del-dis-div" class="form-set">
+                <b>Record ID:</b><br>
+                <label>
+                    <input class="text-box" type="text" id="record" placeholder="1234567890">
+                    <label class="error" id="record-error">*Number must contain 10 digits</label>
+                </label>
+            </div>
+            <br>
+            <button type="button" id="submit">Submit</button>
+        </div>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/qunit/qunit-2.6.1.js"></script>
+<script type="text/javascript" src="/javascripts/scripts.js"></script>
+<script type="text/javascript" src="/javascripts/test.js"></script>
+
+</body>
+</html>

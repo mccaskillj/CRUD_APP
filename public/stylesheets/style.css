@@ -1,0 +1,210 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: #96A1B1;
+}
+
+.btn-group button {
+    background-color: #E57460;
+    border: 1px solid white;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: left;
+    width: 33.33%;
+    max-width: 150px;
+}
+
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:hover {
+    background-color: white;
+    color: #E57460;
+}
+
+.submit{
+    background-color: #E57460;
+    border: 1px solid white;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: left;
+    width: 100px;
+    max-width: 150px;
+}
+
+.text-area {
+    display: none;
+}
+
+.text-box {
+}
+
+.box-wrapper {
+    margin-top: 30px;
+    height: auto;
+    width: 100%;
+    background: #3A384C;
+}
+
+.box-wrapper:before {
+    content:"";
+    background-color:#3A384C;
+    position: absolute;
+    height: 200px;
+    width: 4000px;
+    left: -2000px;
+    z-index: -1;
+}
+
+.op-results {
+    float: left;
+    width: 50%;
+    padding: 8px;
+    height: 100%;
+    background: #3A384C;
+    /*border-radius: 5px;*/
+    min-width: 215px;
+}
+
+.op-results h2 {
+    color: #B5B5B9;
+}
+
+.op-results label {
+    word-break: break-all;
+    width: 30em;
+    color: white;
+}
+
+.stats {
+    float: left;
+    width: 50%;
+    padding: 8px;
+    height: 100%;
+    background: #3A384C;
+    /*border-radius: 5px;*/
+    min-width: 215px;
+}
+
+.stats h2 {
+    color: #B5B5B9;
+}
+
+.stats h3 {
+    color: white;
+}
+
+.stats label{
+    color: white;
+    margin-left: 3em;
+}
+
+.error {
+    color: red;
+    display: none;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #96A1B1;
+    margin: 50px auto; /* 15% from the top and centered */
+    border: 2px solid #3A384C;
+    width: 215px; /* Could be more or less, depending on screen size */
+    height: 250px;
+    color: #B5B5B9;
+}
+
+.modal-header {
+    width: 100%;
+    height: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: #96A1B1;
+    vertical-align: top;
+    color: #3A384C;
+}
+
+.form-set {
+    display: none;
+}
+
+.modal-objects {
+    padding: 20px;
+    background: #3A384C;
+    height: 188px;
+}
+
+/* The Close Button */
+.close {
+    color: #3A384C;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -45px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+    /* For mobile phones: */
+    .op-results, .stats {
+        width: 100%;
+        height: auto;
+    }
+    .box-wrapper:before {
+        height: 350px;
+    }
+}
+
+@media only screen and (max-width: 565px) {
+    .btn-group button {
+        width: 100%;
+        max-width: 100%;
+        min-width: 215px;
+    }
+
+    .box-wrapper:before {
+        background-color:#96A1B1;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 331px) {
+    /* For mobile phones: */
+    .op-results, .stats, .btn-group {
+        horiz-align: center;
+    }
+
+    body {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

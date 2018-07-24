@@ -1,0 +1,94 @@
+USAGE:
+To start server:
+    go to the root directory
+    run [npm run dev] in the command line
+
+To see the web-page:
+    go to localhost:8000
+
+To see the testing:
+    go to localhost:8000/test
+
+
+
+
+QUESTIONS:
+
+1) Why did you use the design/frameworks you chose?
+
+I tried to stick as close to the specifications as I could. There was some leeway in the layout that was allowed,
+however, I chose to stay close to the spec and not add extras. I decided on the use of a single updating modal for the
+drop-down in order to remove the duplicate HTML that would be necessary for the three drop-downs to have different
+logic. Because the delete and display modals would behave differently with the same content, it made sense to just set
+up one changeable modal to handle add, delete and display. I thought about adding a sortable table to display the ID
+numbers after they were added and remove them on deletion but decided against it when trying to keep my product close to
+the spec, however, I feel it would increase usability (The server will spit out the id's after each addition/deletion to
+the command line for help with testing).
+
+The only frameworks I used were not directly related to the web-page itself. These frameworks were node/express for the
+backend API and QUnit for the unit testing. In the spec there was a comment about deciding to show ability with the
+languages vs frameworks so I chose to show understanding of the basics on the web-page and ability to learn new
+frameworks with the peripherals (ie. backend/testing frameworks).
+
+2) Are there better frameworks for this task which you did not choose for some reason?
+
+I tried to showcase my ability in the basics because I believe that someone who understands the basics well can
+understand the frameworks more completely. So in terms of accomplishing that goal for this project, there were no better
+ways to handle that with frameworks. With that said, there were frameworks which I would have used had my goal been
+different. I actively avoided bootstrap as I think that bootstrap is showing its limitations recently vs standard CSS.
+If I were to use a library for CSS I would lean towards Sass as I think it allows for better cross browser support, CSS
+upkeep and I think the industry is moving more in that direction as a whole. Moving to the Javascript/HTML portion, the
+framework would come down preference. If I were attempting to keep the Javascript and HTML more "Pure" then I would
+probably look to use JQuery more as I believe it is a strong library with the ability to simplify some logic quite a
+bit. If I were just looking to abstract everything into a framework then ReactJS has become very popular and allows the
+for more powerful control over the development process by shifting the HTML into the javascript and allowing for more
+unification across the project.
+
+3) When you added testing, why did you select those particular tests?
+
+I chose not to add testing to the back-end because that was more supplementary to the assignment. I did however chose to
+test the main component of the assignment, which was the web-page and the javascript. Most of the testing was based upon
+testing the javascript logic to make sure that it would behave as expected when used in its individual parts and modify
+the DOM as expected when executing. I tried to make sure that everything that controlled website flow was tested both
+manually and through unit tests in order to make sure that nothing was missed when changes were made. Ideally the tests
+would have been written before but as I had to learn QUnit I waited till I had a better understanding of how everything
+needed to work.
+
+4) How can the API calls be made secure so that not anyone with the API can call them?
+
+Currently all of my API calls are handled in the AJAX so having the authentication for the API would require some
+changes. If I wanted to keep the AJAX coming straight from the web-page I would add some sort of user/password
+authentication to the API and allow the username/password to be passed and provide back an API key or temporary access
+token which could be used to make actual API calls from that point on. If the logic was able to be moved to the back-end
+of the website then the controller could handle the authentication of the website user itself and then use a standard
+persistent API key to communicate with the API, then send the data back to the front end, either raw or parsed data. I
+think the second option is preferred as most external APIs charge for usage so authenticating first would allow
+pre-screening, but the first option is just as valid as long as the page is forced into HTTPS.
+
+5) Explain how bad input should be handled on the back end if it gets past the front end checks?
+
+I personally believe the the back-end should have the same checks as the front-end in order to catch the bad data and
+reject all data which is not considered valid. Generally, having bad data coming from the front-end signifies either an
+error in the checks on the front-end or a user deliberately trying to send bad data to the back-end. In the API I
+developed at my previous job, we had pretty robust error checking for the incoming data that either rejected incorrect
+data or ignored extra data and had a system set up to provide back useful error messages for debugging the issues if it
+was due to front end errors. Logging is also useful in situations such as this for determining when errors that need to
+be corrected have occurred and we had full logging set up during development and then a trimmed down logging for use
+after deployment.
+
+6) Which Javascript best practices do you find valuable and adhere to?
+
+Reduce Global Variables:
+    I tried to reduce my usage of globals to be just a couple of variables which were actually modified. I did have some
+    constants which I left global for ease of modification and I abstracted the look-ups for some of the DOM elements to
+    a global in order to increase readability. For the use of the globals, however, I did move the globals into an
+    object to reduce the global namespace.
+
+Use === Comparisons:
+    I have only heard of the nightmares of using == comparisons in javascript so once I learned about === it just made
+    sense to use it as it offers more guarantees and removes some problems that javascript has with silent errors.
+
+Use Parameter Defaults:
+    I have been using python for the past 6 months and this is something that python handles inherently and I have
+    really grown to appreciate. And given that javascript is more prone to silent errors, having the defaults manually
+    added in order to not cause a full break on the web-page due to improper function usage.
