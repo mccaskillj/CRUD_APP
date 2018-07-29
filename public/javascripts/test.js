@@ -5,39 +5,30 @@ QUnit.test("click add", function (assert) {
 });
 
 QUnit.test("click delete", function (assert) {
+    vars.selected_row_id = "1234567890";
     document.getElementById("delete").click();
     document.getElementById('modal').style.display = "none";
-    assert.ok(document.getElementById("modal-title").innerText === vars["delete_message"], "set title to delete")
-});
-
-QUnit.test("click display", function (assert) {
-    document.getElementById("display").click();
-    document.getElementById('modal').style.display = "none";
-    assert.ok(document.getElementById("modal-title").innerText === vars["display_message"], "set title to display")
+    assert.equal(document.getElementById("modal-title").innerText, vars["delete_message"], "set title to delete")
 });
 
 QUnit.test("click delete then add", function (assert) {
+    vars.selected_row_id = "1234567890";
     document.getElementById("delete").click();
     document.getElementById('modal').style.display = "none";
+    vars.selected_row_id = "1234567890";
     document.getElementById("add").click();
     document.getElementById('modal').style.display = "none";
     assert.ok(document.getElementById("modal-title").innerText === vars["add_message"], "set title to add")
 });
 
 QUnit.test("click add then delete", function (assert) {
+    vars.selected_row_id = "1234567890";
     document.getElementById("add").click();
     document.getElementById('modal').style.display = "none";
+    vars.selected_row_id = "1234567890";
     document.getElementById("delete").click();
     document.getElementById('modal').style.display = "none";
     assert.ok(document.getElementById("modal-title").innerText === vars["delete_message"], "set title to delete")
-});
-
-QUnit.test("click add then display", function (assert) {
-    document.getElementById("add").click();
-    document.getElementById('modal').style.display = "none";
-    document.getElementById("display").click();
-    document.getElementById('modal').style.display = "none";
-    assert.ok(document.getElementById("modal-title").innerText === vars["display_message"], "set title to delete")
 });
 
 QUnit.test("statistics update 1.000", function (assert) {
@@ -56,13 +47,6 @@ QUnit.test("statistics update 2.000", function (assert) {
     statistic_update();
     assert.ok(document.getElementById("additions").innerText === "2.000", "got the correct additions per hour")
     assert.ok(document.getElementById("ratio").innerText === "2.000:1", "got the correct ratio")
-});
-
-QUnit.test("update results", function (assert) {
-    results_update("line1", "line2", "line3");
-    assert.ok(document.getElementById("results1").innerHTML === "line1", "set line 1 properly");
-    assert.ok(document.getElementById("results2").innerHTML === "line2", "set line 2 properly");
-    assert.ok(document.getElementById("results3").innerHTML === "line3", "set line 3 properly");
 });
 
 QUnit.test("clear modal form-sets", function (assert) {
@@ -145,28 +129,6 @@ QUnit.test("phone valid bad", function (assert) {
     assert.equal(outcome, false, "returned false successfully");
 });
 
-QUnit.test("record valid good", function (assert) {
-    let outcome = null;
-    if (record_valid("1234567890")) {
-        outcome = true;
-    }
-    else {
-        outcome = false;
-    }
-    assert.equal(outcome, true, "returned true successfully");
-});
-
-QUnit.test("record valid bad", function (assert) {
-    let outcome = null;
-    if (record_valid("123456")) {
-        outcome = true;
-    }
-    else {
-        outcome = false;
-    }
-    assert.equal(outcome, false, "returned false successfully");
-});
-
 QUnit.test("check add good both", function (assert) {
     let outcome = null;
     if (check_add("name", "1234567890")) {
@@ -213,28 +175,6 @@ QUnit.test("check add good bad", function (assert) {
     assert.equal(outcome, false, "evaluated to false");
     assert.equal(document.getElementById('name-error').style.display, "inline", "error stayed hidden");
     assert.equal(document.getElementById('phone-error').style.display, "inline", "error stayed hidden");
-});
-
-QUnit.test("check del/dis good", function (assert) {
-    let outcome = null;
-    if (check_del_dis("1234567890")) {
-        outcome = true;
-    } else {
-        outcome = false;
-    }
-    assert.equal(outcome, true, "evaluated to true");
-    assert.equal(document.getElementById('record-error').style.display, "none", "error stayed hidden");
-});
-
-QUnit.test("check del/dis good", function (assert) {
-    let outcome = null;
-    if (check_del_dis("1234")) {
-        outcome = true;
-    } else {
-        outcome = false;
-    }
-    assert.equal(outcome, false, "evaluated to false");
-    assert.equal(document.getElementById('record-error').style.display, "inline", "error stayed hidden");
 });
 
 QUnit.test("parse phone full", function (assert) {

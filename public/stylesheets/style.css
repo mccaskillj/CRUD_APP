@@ -3,20 +3,23 @@
 }
 
 body {
-    padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background: #96A1B1;
+    background: #B6B6D8;
+}
+
+.btn-group {
+    margin-top: 50px;
+    width: 100%;
 }
 
 .btn-group button {
-    background-color: #E57460;
-    border: 1px solid white;
+    background-color: #413D4F;
+    border: 1px solid #B6B6D8;
     color: white;
     padding: 10px 24px;
     cursor: pointer;
     float: left;
     width: 33.33%;
-    max-width: 150px;
 }
 
 .btn-group:after {
@@ -26,19 +29,23 @@ body {
 }
 
 .btn-group button:hover {
-    background-color: white;
-    color: #E57460;
+    background-color: #D46250;
+    /*color: #413D4F;*/
 }
 
-.submit{
-    background-color: #E57460;
-    border: 1px solid white;
+.submit {
+    background-color: #413D4F;
+    border: 1px solid #B6B6D8;
     color: white;
     padding: 10px 24px;
     cursor: pointer;
     float: left;
     width: 100px;
     max-width: 150px;
+}
+
+.submit:hover {
+    background-color: #D46250;
 }
 
 .text-area {
@@ -48,69 +55,94 @@ body {
 .text-box {
 }
 
-.box-wrapper {
-    margin-top: 30px;
-    height: auto;
-    width: 100%;
-    background: #3A384C;
-}
-
-.box-wrapper:before {
-    content:"";
-    background-color:#3A384C;
-    position: absolute;
-    height: 200px;
-    width: 4000px;
-    left: -2000px;
-    z-index: -1;
-}
-
-.op-results {
-    float: left;
-    width: 50%;
-    padding: 8px;
-    height: 100%;
-    background: #3A384C;
-    /*border-radius: 5px;*/
-    min-width: 215px;
-}
-
-.op-results h2 {
-    color: #B5B5B9;
-}
-
-.op-results label {
-    word-break: break-all;
-    width: 30em;
-    color: white;
-}
-
 .stats {
-    float: left;
-    width: 50%;
-    padding: 8px;
-    height: 100%;
-    background: #3A384C;
+    width: 100%;
+    height: 200px;
     /*border-radius: 5px;*/
     min-width: 215px;
-}
-
-.stats h2 {
-    color: #B5B5B9;
-}
-
-.stats h3 {
     color: white;
 }
 
-.stats label{
-    color: white;
-    margin-left: 3em;
+.stats-one, .stats-two, .stats-three {
+    float: left;
+    height: 100%;
+    width: 33.33333333%;
+    text-align: center;
+    display: table;
+    padding: 8px;
+}
+
+.stats-one-child, .stats-two-child, .stats-three-child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.stats label, .stats-one-child {
+    font-size: 7vw;
+}
+
+.stats-one {
+    background: #413D4F;
+}
+
+.stats-two {
+    background: #DF7963;
+}
+
+.stats-three {
+    background: #D46250;
+}
+
+.stats label {
+    font-size: 7vw;
 }
 
 .error {
     color: red;
     display: none;
+}
+
+.table-content {
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+table tr td:first-child {
+    width: 5em;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+    background: lightgray;
+}
+
+tr:nth-child(odd) {
+    background: white;
+}
+
+tr:first-child {
+    background: #413D4F;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+}
+
+.table-header {
+    background: white;
 }
 
 /* The Modal (background) */
@@ -129,12 +161,12 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #96A1B1;
+    background-color: #413D4F;
     margin: 50px auto; /* 15% from the top and centered */
-    border: 2px solid #3A384C;
+    border: 2px solid #B6B6D8;
     width: 215px; /* Could be more or less, depending on screen size */
     height: 250px;
-    color: #B5B5B9;
+    color: #413D4F;
 }
 
 .modal-header {
@@ -142,9 +174,9 @@ body {
     height: auto;
     padding-left: 20px;
     padding-right: 20px;
-    background: #96A1B1;
+    background: #413D4F;
     vertical-align: top;
-    color: #3A384C;
+    color: white;
 }
 
 .form-set {
@@ -153,13 +185,13 @@ body {
 
 .modal-objects {
     padding: 20px;
-    background: #3A384C;
+    background: #B6B6D8;
     height: 188px;
 }
 
 /* The Close Button */
 .close {
-    color: #3A384C;
+    color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -173,14 +205,112 @@ body {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 800px) {
-    /* For mobile phones: */
-    .op-results, .stats {
-        width: 100%;
-        height: auto;
+#toast {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+#toast.show {
+    visibility: visible; /* Show the snackbar */
+
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* toast animations */
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
     }
-    .box-wrapper:before {
-        height: 350px;
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip[disabled]:hover .tooltiptext {
+    visibility: visible;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .stats-one, .stats-two, .stats-three {
+        width:100%;
+        height: 50%;
+    }
+
+    .stats label, .stats-one-child {
+        font-size: 24pt;
+    }
+
+    .btn-group {
+        margin-top: 160px;
     }
 }
 
@@ -191,20 +321,10 @@ body {
         min-width: 215px;
     }
 
-    .box-wrapper:before {
-        background-color:#96A1B1;
-        visibility: hidden;
-    }
 }
 
-@media only screen and (max-width: 331px) {
-    /* For mobile phones: */
-    .op-results, .stats, .btn-group {
-        horiz-align: center;
-    }
-
-    body {
-        padding-left: 0;
-        padding-right: 0;
+@media only screen and (max-width: 260px) {
+    .btn-group {
+        margin-top: 180px;
     }
 }

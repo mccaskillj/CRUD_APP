@@ -1,4 +1,8 @@
-let data = {};
+let data = {
+    '1234567890': {Name: 'Test1', PhoneNumber: '(123) 456-7890'},
+    '0987654321': {Name: 'Test2', PhoneNumber: '(098) 765-4321'}
+};
+
 let additions = 0;
 let deletions = 0;
 
@@ -14,10 +18,15 @@ module.exports = function (app, db) {
     });
 
     app.get('/statistics', function (req, res) {
+        let entries = [];
+        for (let key in data){
+            entries.push({ID: key, Name: data[key]['Name']});
+        }
         res.send({
             "Additions": additions,
             "Deletions": deletions,
-            "Time": process.uptime() / 60
+            "Time": process.uptime() / 60,
+            "Records": entries
         })
     });
 
